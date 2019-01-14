@@ -7,20 +7,19 @@
 
 ## Introduction
 
-Filtering is a very common function of programming that we've all utilized at
-some point in our lives. When shopping for clothing online, chances are, we've
-filtered by sizes, so we can weed out the clothing that we definitely can't fit
-into, and browse through what caters to our needs. If you've ever ordered food
-online, chances are, we've all filtered by what's open right now, and what's
-available for delivery in your neighborhood--filtering out results for restaurants
-that don't deliver to your address. It is a very common action to need to perform.
-This used to be quite annoying to do manually, but now there is no need to fret--
-`filter` is here to help!
+Chances are, we've all had the experience of filtering a selection of choices
+online. When shopping for clothing, we might have selected a single size so
+that we can consider only the search results we need. Or when ordering food
+online, we could have customized our results to only show restaurants currently
+open or offering delivery in our neighborhoods. Since it's such a common need
+for a user, it's also a common function for a web programmer to implement.
+There are many ways to filter in programming, but the easiest is to use `filter`.
 
-## 
+## Define How the `filter()` Method Works
 
-You can think of `filter` as a for loop that specifically keeps or filters out
-certain values from an array. Consider the following code:
+If you have an array, but only want some of the elements in it--that's where
+`filter` comes in! You can think of `filter` as a `for` loop that specifically
+keeps or filters out certain values from an array. Consider the following code:
 
 ```js
 let arr = [1, 2, 3, 4, 5, 6];
@@ -37,10 +36,11 @@ works, but now we have the `filter` method to achieve the same result much easie
 
 ## Demonstrate `filter`
 
-Filter is similar to map. If you know `map`, you know `filter`! Filter receives the
-same arguments as map, and works very similarly. The only difference is that the
-callback needs to return either _true_ or _false_. If it returns _true_, the array
-keeps that element. If it returns false that element is filtered out.
+The `filter` method creates a new array with all elements that pass certain tests provided
+function. Filter receives the same arguments as `map` (current item, index, and entire array)
+in the callback function, and works very similarly. The only difference is that the callback
+needs to return either _true_ or _false_. If it returns _true_, the array keeps that element.
+If it returns false that element is filtered out.
 
 Here is the earlier example written with `filter`:
 
@@ -61,7 +61,6 @@ that meet certain conditions. When we use methods like `filter`, we work directl
 the current value, instead of accessing it through an index (i.e array[i]), avoid mutation
 of the original array (minimizing side-effects), and there's no need to manage a `for`
 loop with an empty array to push values into.
-
 
 ## Resources
 - [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
