@@ -1,4 +1,4 @@
-# Iterator Drill: Find
+# Iterator Drill: Filter
 
 ## Learning Goals
 
