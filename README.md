@@ -7,12 +7,12 @@
 
 ## Introduction
 
-Chances are, we've all had the experience of filtering a selection of choices
+We've all probably had the experience of filtering a selection of choices
 online. When shopping for clothing, we might have selected a single size so
 that we can consider only the search results we need. Or when ordering food
 online, we could have customized our results to only show restaurants currently
 open or offering delivery in our neighborhoods. Since it's such a common need
-for a user, it's also a common function for a web programmer to implement.
+for a user, it's also a common function for a web programmer to run.
 There are many ways to filter in programming, but the easiest is to use `filter`.
 
 ## Define How the `filter()` Method Works
@@ -36,7 +36,7 @@ works, but now we have the `filter` method to achieve the same result much easie
 
 ## Demonstrate `filter`
 
-The `filter` method creates a new array with all elements that pass certain tests provided
+The `filter` method creates a new `Array` with all elements that pass certain tests provided
 function. Filter receives the same arguments as `map` (current item, index, and entire array)
 in the callback function, and works very similarly. The only difference is that the callback
 needs to return either _true_ or _false_. If it returns _true_, the array keeps that element.
