@@ -179,30 +179,6 @@ const tutorials = [
 
 Run `learn` and ensure that tests are passing.
 
-## Use `map()` to Generate a New Array
-
-Let's put our newly acquired knowledge of `map()` to use! We just bought 10 coding
-tutorials online, but some of them are very long. We're going to use the `duration`
-value to determine which lessons to knock out first. Create a new array with just
-the name of each tutorial that is 60 minutes (1 hour) or less long.
-
-```js
-const tutorials = [
-  { name: 'What does the this keyword mean?', duration: 80 },
-  { name: 'What is the Constructor OO pattern?', duration: 40 },
-  { name: 'Implementing Blockchain Web API', duration: 100 },
-  { name: 'The Test Driven Development Workflow', duration: 140 },
-  { name: 'What is NaN and how can we check for it', duration: 50 },
-  { name: 'What is the difference between stopPropagation and preventDefault?', duration: 90 },
-  { name: 'Immutable State and Pure Functions', duration: 75 },
-  { name: 'What is the difference between == and ===?', duration: 30 },
-  { name: 'What is the difference between event capturing and bubbling?', duration: 60 },
-  { name: 'What is JSONP?', duration: 25 },
-];
-```
-
-Run `learn` and ensure that tests are passing.
-
 ## Conclusion
 
 `map()` takes 2 arguments--a callback and the optional context. The callback runs

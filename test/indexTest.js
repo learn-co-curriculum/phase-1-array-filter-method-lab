@@ -1,15 +1,13 @@
 const expect = chai.expect;
 
 describe('index.js', function () {
-  describe('shortTutorials()', function () {
-    it('has a shortTutorials() function', function () {
-      expect(shortTutorials).to.exist
+  describe('titleCased()', function () {
+    it('has a titleCased() function', function () {
+      expect(titleCased).to.exist
     });
-  });
 
-  describe('shortTutorials()', function () {
     it('returns an array with title case tutorial names', function () {
-      expect(shortTutorials).to.have.all.members(
+      expect(titleCased).to.have.all.members(
         [
           "What Does The This Keyword Mean?",
           "What Is The Contutorialuctor OO Pattern?",
