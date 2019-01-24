@@ -1,191 +1,95 @@
-# Iterator Drill: Map
+# Iterator Drill: Filter
 
 ## Learning Goals
 
-* Define how the `map()` method works
-* Demonstrate `map()` with `Array`s
-* Demonstrate `map()` with complex data structures
-* Use `map()` to generate a new array
-
+* Define how the `filter()` method works
+* Demonstrate `filter()`
+* Use `filter()` to return matching results
 
 ## Introduction
 
-As developers, we find ourselves responsible for all sorts of common, but
-tedious tasks, such as iterating over arrays. Although a `for` loop or nesting
-in lists and collections will complete the task, we can take advantage of a
-method like `map()` to organize and optimize our code into building blocks
-of functions, which we can then chain together to create more readable and
-understandable functions.
+We've all probably had the experience of filtering a selection of choices
+online. When shopping for clothing, we might have selected a single size so
+that we can consider only the search results we need. Or when ordering food
+online, we could have customized our results to only show restaurants currently
+open or offering delivery in our neighborhoods. Since it's such a common need
+for a user, it's also a common function for a web programmer to run.
+There are many ways to filter in programming, but the easiest is to use `filter()`.
 
-## Define How the `map()` Method Works
+## Define How the `filter()` Method Works
 
-`Array.prototype.map()` is an array method that iterates over all elements,
-allowing you to apply a function to each element in that array, and changing
-them into something else. The result is then returned as a *new* array, leaving
-the original array unmodified (but remember, **not** the elements we modify, that
-requires defensive copying). This is super important, because it saves us from
-having to create a new array ourselves and copy stuff in there, **or** modifying
-the original elements in the array, which we may need later.
-
-## Demonstrate `map()` With `Array`s
-
-We use `map()` when we want to perform an action on each element in the collection,
-and "gather" the results into a new `Array`.
-
-We'll also use this as a chance to demonstrate some of the power of functions in
-JavaScript. We'll write `map()` **four times** so you can see how the iterator
-functions allow us to write more _expressive_ code.
-
-### `for` and `for...of`
-
-In this example, we are using a standard bit of iteration code. Because
-`for ` and `for...of` are _general_ functions that can be used to do lots
-of things another programmer won't be sure if the inner workings return
-values are important or not.
+If you have an array, but only want some of the elements in it--that's where
+`filter()` comes in! You can think of `filter()` as a `for` loop that specifically
+keeps or filters out certain values from an array. Consider the following code:
 
 ```js
-let students = ["harry", "ron", "hermione", "ginevra"];
-let rollCall = [];
-
-for (const student of students) {
-  rollCall.push( student + " the wizard" );
+let arr = [1, 2, 3, 4, 5, 6];
+let even = [];
+for(var i = 0; i < arr.length; i++) {
+  if (arr[i] % 2 === 0) even.push(arr[i]);
 }
-
-//=> rollCall = ["harry the wizard", "ron the wizard", "hermione the wizard", "ginevra the wizard"];
+// even = [2,4,6]
 ```
 
-When we write `.map()` we are saying to other programmers: "Expect a new array
-to come out of this after each element is touched!"
+This code checks all of the values in the array. If the value can be divided by 2, it
+is considered an even number. Those values are then pushed onto the even `array`. This
+works, but now we have the `filter()` method to achieve the same result much easier.
 
-### `map()` and a Function Declaration
+## Demonstrate `filter()`
 
-```js
-function studentRollCall(student) {
-  return student + " the wizard";
-}
+The `filter()` method creates a new `Array` with all elements that pass certain tests provided
+function. Filter receives the same arguments as `map` (current item, index, and entire array)
+in the callback function, and works very similarly. The only difference is that the callback
+needs to return either _true_ or _false_. If it returns _true_, the array keeps that element.
+If it returns false that element is filtered out.
 
-let students = ["harry", "ron", "hermione", "ginevra"];
-let rollCall = students.map(studentRollCall);
-//=> rollCall = ["harry the wizard", "ron the wizard", "hermione the wizard", "ginevra the wizard"];
-```
-
-With `map()` we're passing a function _as an argument_. Arguments can be
-things like `Number` or `String`, but, in JavaScript, **can also** be
-**work**. Very few other programming languages allow that!
-
-The iterator function `map()` expects to be _passed a function as an
-argument_ which they will hand each of their elements off to. In the case of
-`map()` it hands each element to the function and stores the return value of
-the function into a new `Array`.
-
-This code is more _expressive_ because it lives up to the promise of map. It
-creates a new `Array` after each element is "touched" by a function.
-
-One drawback to this code is that the `studentRollCall` function doesn't do
-much work. It just returns something that the `student` _already_ knew how to
-do.  What if we use a function expression ("anonymous function") instead?
-
-### `map()` With a Function Expression
+Here is the earlier example written with `filter()`:
 
 ```js
-let students = ["harry", "ron", "hermione", "ginevra"];
-let rollCall = students.map(function(student) {
-  return student + " the wizard";
+let even = arr.filter(n => {
+  return n % 2 === 0;
 });
-//=> rollCall = ["harry the wizard", "ron the wizard", "hermione the wizard", "ginevra the wizard"];
+// even = [2,4,6]
 ```
 
-That's much shorter. It has all the same advantages of the previous version.
+This code's function _returns_ true if the element can be divided by 2 with no
+remainder (i.e. "is even").
 
-### `map()` With an Arrow Function
+## Use `filter()` to Return Matching Results
 
-Thanks to arrow functions, we can shorten up the function expression to:
+We have an array of drivers with various information. We need to write methods using the
+`filter()` method so that PickMeUp Taxi service employees can easily query the data. Run the
+tests to see what conditions need to be met by each function _before_ you start writing
+JavaScript code.
 
-```js
-// When the parameter list is only one element, we can drop () !
-let students = ["harry", "ron", "hermione", "ginevra"];
-let rollCall = students.map( student => student + " the wizard" )
-//=> rollCall = ["harry the wizard", "ron the wizard", "hermione the wizard", "ginevra the wizard"];
-```
+You'll be writing three functions:
 
-The code now fits on one line! There is much less noisy JavaScript code so
-the _expressiveness_ has increased: "`rollCall` is the result of `map`-ing
-`students`.
+### Write a Function To Case-insensitively Match `string`s
 
-For the rest of of these examples, we'll use the arrow function.
+Write `findMatching`- This function takes an array of `drivers` and a `string`
+as arguments, and returns the matching list of drivers. The function should be
+case insensitive.
 
-## Demonstrate `map()` with Complex Data Structures
+### Write a Function To Partially Match Substrings
 
-Let's use the `map()` function on a trickier data structure — a list of robots.
-To start things off, we have an array of robots. Now, let's activate all of
-them. An activated robot needs to be marked as such using the `isActivated`
-boolean, as well as have its number of modes doubled:
+Write `fuzzyMatch` - This function takes an array of `drivers` and a `string`
+as arguments for querying the array, and returns all drivers whose names begin
+with the provided letters.
 
-```js
-const robots = [
-  { name: 'Johnny 5', modes: 5, isActivated: false, },
-  { name: 'C3PO', modes: 3, isActivated: false, },
-  { name: 'Sonny', modes: 2.5, isActivated: false, },
-  { name: 'Baymax', modes: 1.5, isActivated: false, },
-];
+### Write a Function To Match `object` Values To a Provided `string`
 
-const activatedRobots = robots.map(function (robot) {
-  return Object.assign({}, robot, {
-    modes: robot.modes * 2,
-    isActivated: true,
-  });
-});
-
-console.log(activatedRobots);
-
-/*
- Result:
- [
-   { name: 'Johnny 5', modes: 10, isActivated: true },
-   { name: 'C3PO', modes: 6, isActivated: true },
-   { name: 'Sonny', modes: 5, isActivated: true },
-   { name: 'Baymax', modes: 3, isActivated: true }
- ]
-*/
-```
-
-With  the native `map()` function that is a property of `Array`'s prototype,
-it gives us the exact same result! Now that we know how map is implemented,
-it holds no more secrets for us! We can discard our own `map()` function and
-just use the `map()` property on arrays.
-
-## Use `map()` to Generate a New Array
-
-Let's put our newly acquired knowledge of `map()` to use! We just uploaded 10 coding
-tutorials online, but some of them have inconsistent casing. We want all the titles
-to be "title case", in other words, the _first_ letter of each word is capitalized. 
-Create a new array with the new names of each tutorial that is in the proper title
-case formatting.
-
-```js
-const tutorials = [
-  'what does the this keyword mean?', 
-  'What is the Contutorialuctor OO pattern?',
-  'implementing Blockchain Web API',
-  'The Test Driven Development Workflow',
-  'What is NaN and how Can we Check for it',
-  'What is the difference between stopPropagation and preventDefault?',
-  'Immutable State and Pure Functions',
-  'what is the difference between == and ===?',
-  'what is the difference between event capturing and bubbling?',
-  'what is JSONP?'
-];
-```
-
-Run `learn` and ensure that tests are passing.
+Write `matchName` - This function takes an array of `drivers` and a `string` as
+arguments. In this function, each element of the `drivers` array is a
+JavaScript object that has a property of `name`. The function should return
+each element whose `name` property matches the provided `string` argument.
 
 ## Conclusion
 
-`map()` takes 2 arguments--a callback and the optional context. The callback runs
-for each value in an array and returns each new value in the resulting array. It
-returns a new array that is the same length as the original array and saves time
-while making the code simpler and easy to read.
+The `filter()` method returns a new array created from all elements in the original array
+that meet certain conditions. When we use methods like `filter()`, we work directly with
+the current value, instead of accessing it through an index (i.e array[i]), avoid mutation
+of the original array (minimizing side-effects), and there's no need to manage a `for`
+loop with an empty array to push values into.
 
 ## Resources
-
-- [MDN: Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
