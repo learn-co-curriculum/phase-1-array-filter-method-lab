@@ -1,26 +1,79 @@
 const expect = chai.expect;
 
 describe('index.js', function () {
-  describe('titleCased()', function () {
-    it('has a titleCased() function', function () {
-      expect(titleCased).to.exist
+  describe('findMatching()', function () {
+    it('returns all drivers that match the passed in name', function () {
+      const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby']
+
+      expect(findMatching(drivers, 'Bobby')).to.eql(['Bobby', 'Bobby']);
+      expect(findMatching(drivers, 'Sammy')).to.eql(['Sammy']);
     });
 
-    it('returns an array with title case tutorial names', function () {
-      expect(titleCased).to.have.all.members(
-        [
-          "What Does The This Keyword Mean?",
-          "What Is The Contutorialuctor OO Pattern?",
-          "Implementing Blockchain Web API",
-          "The Test Driven Development Workflow",
-          "What Is NaN And How Can We Check For It",
-          "What Is The Difference Between StopPropagation And PreventDefault?",
-          "Immutable State And Pure Functions",
-          "What Is The Difference Between == And ===?",
-          "What Is The Difference Between Event Capturing And Bubbling?",
-          "What Is JSONP?"
-      ]
-      )
+    it('returns matching drivers if case does not match but letters do', function () {
+      const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'bobby'];
+
+      expect(findMatching(drivers, 'Bobby')).to.eql(['Bobby', 'bobby']);
+    });
+
+    it('returns an empty array if there is no match', function () {
+      const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'bobby'];
+
+      expect(findMatching(drivers, 'Susan')).to.eql([]);
+    });
+  });
+
+  describe('fuzzyMatch()', function () {
+    const drivers = [];
+
+    beforeEach(function () {
+      drivers.length = 0;
+
+      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'bobby');
+    });
+
+    it('returns a driver if beginning provided letters match', function () {
+      expect(fuzzyMatch(drivers, 'Sa')).to.have.members(['Sammy', 'Sarah', 'Sally']);
+    });
+
+    it('does not return drivers if only middle or ending letters match', function () {
+      expect(fuzzyMatch(drivers, 'y')).to.have.members([]);
+    });
+
+    it('does not return drivers if only middle or ending letters match', function () {
+      expect(fuzzyMatch(drivers, 'mm')).to.have.members([]);
+    });
+  });
+
+  describe('matchName()', function () {
+    it('accesses the data structure to check if name matches', function () {
+      const drivers = [
+        {
+          name: 'Bobby',
+          hometown: 'Pittsburgh' },
+        {
+          name: 'Sammy',
+          hometown: 'New York' } ,
+        {
+          name: 'Sally',
+          hometown: 'Cleveland' },
+        {
+          name: 'Annette',
+          hometown: 'Los Angeles' },
+        {
+          name: 'Bobby',
+          hometown: 'Tampa Bay' }
+      ];
+
+      expect(matchName(drivers, 'Bobby')).to.eql([
+        {
+          name: 'Bobby',
+          hometown: 'Pittsburgh'
+        },
+        {
+          name: 'Bobby',
+          hometown: 'Tampa Bay'
+        }
+      ]);
     });
   });
 });
