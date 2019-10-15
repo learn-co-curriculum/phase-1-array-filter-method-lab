@@ -87,7 +87,7 @@ each element whose `name` property matches the provided `string` argument.
 
 The `filter()` method returns a new array created from all elements in the original array
 that meet certain conditions. When we use methods like `filter()`, we work directly with
-the current value, instead of accessing it through an index (i.e array[i]), avoid mutation
+the current value, instead of accessing it through an index (i.e `array[i]`), avoid mutation
 of the original array (minimizing side-effects), and there's no need to manage a `for`
 loop with an empty array to push values into.
 
