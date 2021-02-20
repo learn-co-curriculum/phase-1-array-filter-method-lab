@@ -37,11 +37,12 @@ works, but now we have the `filter()` method to achieve the same result much eas
 
 ## Demonstrate `filter()`
 
-The `filter()` method creates a new `Array` with all elements that pass certain tests provided
-function. Filter receives the same arguments as `map` (current item, index, and entire array)
-in the callback function, and works very similarly. The only difference is that the callback
-needs to return either _true_ or _false_. If it returns _true_, the array keeps that element.
-If it returns false that element is filtered out.
+The `filter()` method creates a new `Array` with all elements that pass the
+condition specified in the callback function. Filter passes the same arguments
+as `map` (current item, index, and entire array) to the callback, and works very
+similarly. The only difference is that the callback needs to return either
+_true_ or _false_. If it returns _true_, the array keeps that element. If it
+returns _false_ that element is filtered out.
 
 Here is the earlier example written with `filter()`:
 
@@ -57,10 +58,10 @@ remainder (i.e. "is even").
 
 ## Use `filter()` to Return Matching Results
 
-We have an array of drivers with various information. We need to write methods using the
-`filter()` method so that PickMeUp Taxi service employees can easily query the data. Run the
-tests to see what conditions need to be met by each function _before_ you start writing
-JavaScript code.
+We have an array of drivers with various information. We need to write methods
+using the `filter()` method so that PickMeUp Taxi service employees can easily
+query the data. Run the tests to see what conditions need to be met by each
+function _before_ you start writing JavaScript code.
 
 You'll be writing three functions:
 
@@ -85,11 +86,13 @@ each element whose `name` property matches the provided `string` argument.
 
 ## Conclusion
 
-The `filter()` method returns a new array created from all elements in the original array
-that meet certain conditions. When we use methods like `filter()`, we work directly with
-the current value, instead of accessing it through an index (i.e `array[i]`), avoid mutation
-of the original array (minimizing side-effects), and there's no need to manage a `for`
-loop with an empty array to push values into.
+The `filter()` method returns a new array created from all elements in the
+original array that meet certain conditions. When we use methods like
+`filter()`, we work directly with the current value, instead of accessing it
+through an index (i.e `array[i]`), avoid mutation of the original array
+(minimizing side-effects), and there's no need to manage a `for` loop with an
+empty array to push values into.
 
 ## Resources
-- [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+* [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
