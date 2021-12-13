@@ -3,20 +3,20 @@ const sinon = require( 'sinon' )
 describe('index.js', function () {
   describe('findMatching()', function () {
     it('returns all drivers that match the passed in name', function () {
-      const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby']
+      const drivers = ['Azar', 'Samip', 'Guadalupe', 'Aki', 'Lin', 'Azar']
 
-      expect(findMatching(drivers, 'Bobby')).to.eql(['Bobby', 'Bobby']);
-      expect(findMatching(drivers, 'Sammy')).to.eql(['Sammy']);
+      expect(findMatching(drivers, 'Azar')).to.eql(['Azar', 'Azar']);
+      expect(findMatching(drivers, 'Samip')).to.eql(['Samip']);
     });
 
     it('returns matching drivers if case does not match but letters do', function () {
-      const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'bobby'];
+      const drivers = ['Azar', 'Samip', 'Guadalupe', 'Aki', 'Lin', 'azar'];
 
-      expect(findMatching(drivers, 'Bobby')).to.eql(['Bobby', 'bobby']);
+      expect(findMatching(drivers, 'Azar')).to.eql(['Azar', 'azar']);
     });
 
     it('returns an empty array if there is no match', function () {
-      const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'bobby'];
+      const drivers = ['Azar', 'Samip', 'Guadalupe', 'Aki', 'Lin', 'azar'];
 
       expect(findMatching(drivers, 'Susan')).to.eql([]);
     });
@@ -28,11 +28,11 @@ describe('index.js', function () {
     beforeEach(function () {
       drivers.length = 0;
 
-      drivers.push('Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'bobby');
+      drivers.push('Azar', 'Samip', 'Guadalupe', 'Aki', 'Lin', 'azar');
     });
 
     it('returns a driver if beginning provided letters match', function () {
-      expect(fuzzyMatch(drivers, 'Sa')).to.have.members(['Sammy', 'Sarah', 'Sally']);
+      expect(fuzzyMatch(drivers, 'Sa')).to.have.members(['Samip', 'Lin', 'Guadalupe']);
     });
 
     it('does not return drivers if only middle or ending letters match', function () {
@@ -48,29 +48,29 @@ describe('index.js', function () {
     it('accesses the data structure to check if name matches', function () {
       const drivers = [
         {
-          name: 'Bobby',
+          name: 'Azar',
           hometown: 'Pittsburgh' },
         {
-          name: 'Sammy',
+          name: 'Samip',
           hometown: 'New York' } ,
         {
-          name: 'Sally',
+          name: 'Guadalupe',
           hometown: 'Cleveland' },
         {
-          name: 'Annette',
+          name: 'Aki',
           hometown: 'Los Angeles' },
         {
-          name: 'Bobby',
+          name: 'Azar',
           hometown: 'Tampa Bay' }
       ];
 
-      expect(matchName(drivers, 'Bobby')).to.eql([
+      expect(matchName(drivers, 'Azar')).to.eql([
         {
-          name: 'Bobby',
+          name: 'Azar',
           hometown: 'Pittsburgh'
         },
         {
-          name: 'Bobby',
+          name: 'Azar',
           hometown: 'Tampa Bay'
         }
       ]);
