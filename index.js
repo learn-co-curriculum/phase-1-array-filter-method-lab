@@ -9,15 +9,17 @@ function findMatching( driversNames, driverName ) {
 console.log(findMatching(driversNames,"Bobby"))
 
 
-function fuzzyMatch (arr , string){
-   let newArr = [];
 
-   if (arr.map((item) => item.substring(0, 2) === string)) {
-     return (newArr = arr.filter((item) => item.substring(0, 2) === string));
-   }
- }
+function fuzzyMatch(arr, keyword) {
+   return arr.filter(driver => {
+    let keywordLength = keyword.length // 3
+    let fuzzyWord = driver.substring(0, keywordLength) // Bo
+    return keyword.toLowerCase() === fuzzyWord.toLowerCase()
 
-console.log(fuzzyMatch(driversNames,"y"));
+  }) 
+}
+
+fuzzyMatch(drivers, 'Sa');
 
 const drivers = [
    {
