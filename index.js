@@ -13,7 +13,7 @@ console.log(findMatching(driversNames,"Bobby"))
 function fuzzyMatch(arr, keyword) {
    return arr.filter(driver => {
     let keywordLength = keyword.length // 3
-    let fuzzyWord = driver.substring(0, keywordLength) // Bo
+    let fuzzyWord = driver.substring(0, keywordLength) // Bob
     return keyword.toLowerCase() === fuzzyWord.toLowerCase()
 
   }) 
