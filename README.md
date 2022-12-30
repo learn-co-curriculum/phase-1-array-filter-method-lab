@@ -36,6 +36,17 @@ You'll be writing three functions:
   The function should return each element whose `name` property matches the
   provided `string` argument.
 
+Remember the workflow:
+
+1. Install the dependencies using `npm install`.
+2. Run the tests using `npm test`.
+3. Read the errors; vocalize what they're asking you to do.
+4. Write code; repeat steps 2 and 3 often until a test passes.
+5. Repeat as needed for the remaining tests.
+
+After you have all the tests passing, remember to commit and push your changes
+up to GitHub, then submit your work to Canvas using CodeGrade.
+
 ## Resources
 
 * [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
