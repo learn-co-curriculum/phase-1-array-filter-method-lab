@@ -6,3 +6,8 @@ const findMatching = (collection, searchValue) => {
 const fuzzyMatch = (collection, searchValue) => {
   return collection.filter(element => element.toLowerCase().slice(0, searchValue.length) === searchValue.toLowerCase())
 }
+
+
+const matchName = (collection, searchValue) => {
+  return collection.filter(element => element.name === searchValue)
+}
