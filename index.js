@@ -5,3 +5,10 @@ function findMatching(names, name) {
 
   return matchingNames ? matchingNames : [];
 }
+
+function fuzzyMatch(names, letters) {
+  const matchingNames = names.filter((driverName) =>
+    driverName.startsWith(letters)
+  );
+  return matchingNames;
+}
