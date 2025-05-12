@@ -13,3 +13,11 @@ function fuzzyMatch(drivers, letters) {
   });
   return driver;
 }
+
+function matchName(drivers, name) {
+  return drivers.filter(function (driver) {
+    if (driver.name === name) {
+      return driver;
+    }
+  });
+}
